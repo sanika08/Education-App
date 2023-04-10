@@ -1,0 +1,18 @@
+[
+  {
+    "img": "img/campus-1.png",
+    "name": "MP Theater"
+  },
+  {
+    "img": "img/campus-2.png",
+    "name" : "C Building"
+  },
+  {
+    "img": "img/campus-3.png",
+    "name": "Pharmacy Building"
+  },
+  {
+    "img": "img/campus-4.png",
+    "name": "Drone View"
+  }
+]
