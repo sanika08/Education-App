@@ -60,6 +60,13 @@ class _MyHomePageState extends State<MyHomePage> {
     Icon(Icons.emoji_events, color: Colors.white, size: 30),
   ];
 
+  List courses=[
+    "Flutter",
+    "Java",
+    "React Js",
+    "Python"
+  ];
+
   @override
   Widget build(BuildContext context) {
   return Container(
@@ -91,7 +98,13 @@ class _MyHomePageState extends State<MyHomePage> {
                 children: [
                   Container(
                     margin: const EdgeInsets.only(left: 10),
-                    child: Text("Educatworks", style: TextStyle(fontSize: 30),),
+                    child: Text(
+                      "Educatworks",
+                      style: TextStyle(
+                          fontSize: 30,
+                        fontWeight: FontWeight.w600
+                      ),
+                    ),
                   ),
                 ],
               ),
@@ -118,7 +131,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                   decoration: BoxDecoration(
                                     borderRadius: BorderRadius.circular(15),
                                     image: DecorationImage(
-                                      image: AssetImage("img/ed3.jpg"),
+                                      image: AssetImage("img/ed7.jpg"),
                                       fit: BoxFit.fill,
                                     ),
                                   ),
@@ -174,9 +187,70 @@ class _MyHomePageState extends State<MyHomePage> {
                             );
                           },
                       ),
-
                     ],
                   ),
+              ),
+              Padding(
+                padding: EdgeInsets.only(
+                  left: 10,
+                  right: 10,
+                ),
+                child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    "Courses",
+                    style: TextStyle(
+                      fontSize: 20,
+                      fontWeight: FontWeight.w500,
+                      color: Colors.black,
+                    ),
+                  ),
+                  Text(
+                    "See all",
+                    style: TextStyle(
+                      fontSize: 17,
+                      fontWeight: FontWeight.w500,
+                      color: Colors.lightBlueAccent,
+                    ),
+                  ),
+                ],
+              ),
+              ),
+              SizedBox(height: 20),
+              GridView.builder(
+                shrinkWrap: true,
+                  physics: NeverScrollableScrollPhysics(),
+                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 2,
+                    childAspectRatio: (MediaQuery.of(context).size.height -50 -25)/(4 * 240),
+                    mainAxisSpacing: 10,
+                    crossAxisSpacing: 10,
+              ),
+                  itemBuilder: (context, index){
+                    return InkWell(
+                      onTap: () {},
+                      child: Container(
+                        padding: EdgeInsets.symmetric(vertical: 20, horizontal: 10),
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(20),
+                          color: Colors.white70,
+                        ),
+                        child: Column(
+                          children: [
+                            Padding(
+                                padding: EdgeInsets.all(10),
+                                child: Image.asset(
+                                  "img/${courses[index]}.png",
+                                  width: 100,
+                                  height: 10,
+                                ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    );
+                  },
               ),
             ],
           ),
