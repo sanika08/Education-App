@@ -60,201 +60,218 @@ class _MyHomePageState extends State<MyHomePage> {
     Icon(Icons.emoji_events, color: Colors.white, size: 30),
   ];
 
-  List courses=[
-    "Flutter",
-    "Java",
-    "React Js",
-    "Python"
+  List imgList=[
+    'flutter',
+    'java',
+    'react-js',
+    'python',
   ];
 
   @override
   Widget build(BuildContext context) {
-  return Container(
+  return Scaffold(
+    body: Container(
     color: Colors.deepOrange,
     child: SafeArea(
       child: Scaffold(
-          body: Column(
-            children: [
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Container(
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Icon(Icons.menu,size: 24,color: Colors.black,),
-                      Row(
-                        children: [
-                          Icon(Icons.search),
-                          SizedBox(width: 10,),
-                          Icon(Icons.notifications),
-                        ],
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-              SizedBox(height: 20,),
-              Row(
-                children: [
-                  Container(
-                    margin: const EdgeInsets.only(left: 10),
-                    child: Text(
-                      "Educatworks",
-                      style: TextStyle(
-                          fontSize: 30,
-                        fontWeight: FontWeight.w600
-                      ),
+          body: SingleChildScrollView(
+            child: Column(
+              children: [
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Container(
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Icon(Icons.menu,size: 24,color: Colors.black,),
+                        Row(
+                          children: [
+                            Icon(Icons.search),
+                            SizedBox(width: 10,),
+                            Icon(Icons.notifications),
+                          ],
+                        ),
+                      ],
                     ),
                   ),
-                ],
-              ),
-              SizedBox(height: 20,),
-              Container(
-                height: 180,
-                child: Stack(
+                ),
+                SizedBox(height: 20,),
+                Row(
                   children: [
-                    Positioned(
-                        top: 0,
-                        left: -20,
-                        right: -20,
-                        child:   Container(
-                          height: 180,
-                          child: PageView.builder(
-                              controller: PageController(viewportFraction: 0.8),
-                              itemCount: 4,
-                              itemBuilder: (_, i)
-                              {
-                                return Container(
-                                  height: 180,
-                                  width: MediaQuery.of(context).size.width,
-                                  margin: EdgeInsets.only(right: 10),
-                                  decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(15),
-                                    image: DecorationImage(
-                                      image: AssetImage("img/ed7.jpg"),
-                                      fit: BoxFit.fill,
-                                    ),
-                                  ),
-                                );
-                              }),
+                    Container(
+                      margin: const EdgeInsets.only(left: 10),
+                      child: Text(
+                        "Educatworks",
+                        style: TextStyle(
+                            fontSize: 30,
+                          fontWeight: FontWeight.w600
                         ),
+                      ),
                     ),
                   ],
                 ),
-              ),
-              SizedBox(height: 20),
-              Padding(
-                padding: EdgeInsets.only(
-                  top: 35,
-                    left: 15,
-                  right: 15,
-                  bottom: 10
-                ),
-                  child: Column(
+                SizedBox(height: 20,),
+                Container(
+                  height: 180,
+                  child: Stack(
                     children: [
-                      GridView.builder(
-                          itemCount: Names.length,
-                          shrinkWrap: true,
-                          physics: NeverScrollableScrollPhysics(),
-                          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                          crossAxisCount: 3,
-                          childAspectRatio: 1.1
+                      Positioned(
+                          top: 0,
+                          left: -20,
+                          right: -20,
+                          child:   Container(
+                            height: 180,
+                            child: PageView.builder(
+                                controller: PageController(viewportFraction: 0.8),
+                                itemCount: 4,
+                                itemBuilder: (_, i)
+                                {
+                                  return Container(
+                                    height: 180,
+                                    width: MediaQuery.of(context).size.width,
+                                    margin: EdgeInsets.only(right: 10),
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(15),
+                                      image: DecorationImage(
+                                        image: AssetImage("img/ed7.jpg"),
+                                        fit: BoxFit.fill,
+                                      ),
+                                    ),
+                                  );
+                                }),
                           ),
-                          itemBuilder: (context,index){
-                            return Column(
-                              children: [
-                                Container(
-                                  height: 60,
-                                  width: 60,
-                                  decoration: BoxDecoration(
-                                    color: catColors[index],
-                                    shape: BoxShape.circle,
-                                  ),
-                                  child: Center(
-                                    child: catIcons[index],
-                                  ),
-                                ),
-                                SizedBox(height: 10,),
-                                Text(
-                                  Names[index],
-                                  style: TextStyle(
-                                    fontSize: 15,
-                                    fontWeight: FontWeight.w500,
-                                    color: Colors.black.withOpacity(0.7),
-                                  ),
-                                ),
-                              ],
-                            );
-                          },
                       ),
                     ],
                   ),
-              ),
-              Padding(
-                padding: EdgeInsets.only(
-                  left: 10,
-                  right: 10,
                 ),
-                child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(
-                    "Courses",
-                    style: TextStyle(
-                      fontSize: 20,
-                      fontWeight: FontWeight.w500,
-                      color: Colors.black,
-                    ),
+                SizedBox(height: 20),
+                Padding(
+                  padding: EdgeInsets.only(
+                    top: 35,
+                      left: 15,
+                    right: 15,
+                    bottom: 10
                   ),
-                  Text(
-                    "See all",
-                    style: TextStyle(
-                      fontSize: 17,
-                      fontWeight: FontWeight.w500,
-                      color: Colors.lightBlueAccent,
-                    ),
-                  ),
-                ],
-              ),
-              ),
-              SizedBox(height: 20),
-              GridView.builder(
-                shrinkWrap: true,
-                  physics: NeverScrollableScrollPhysics(),
-                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 2,
-                    childAspectRatio: (MediaQuery.of(context).size.height -50 -25)/(4 * 240),
-                    mainAxisSpacing: 10,
-                    crossAxisSpacing: 10,
-              ),
-                  itemBuilder: (context, index){
-                    return InkWell(
-                      onTap: () {},
-                      child: Container(
-                        padding: EdgeInsets.symmetric(vertical: 20, horizontal: 10),
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(20),
-                          color: Colors.white70,
-                        ),
-                        child: Column(
-                          children: [
-                            Padding(
-                                padding: EdgeInsets.all(10),
-                                child: Image.asset(
-                                  "img/${courses[index]}.png",
-                                  width: 100,
-                                  height: 10,
-                                ),
+                    child: Column(
+                      children: [
+                        GridView.builder(
+                            itemCount: Names.length,
+                            shrinkWrap: true,
+                            physics: NeverScrollableScrollPhysics(),
+                            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                            crossAxisCount: 3,
+                            childAspectRatio: 1.1
                             ),
-                          ],
+                            itemBuilder: (context,index){
+                              return Column(
+                                children: [
+                                  Container(
+                                    height: 60,
+                                    width: 60,
+                                    decoration: BoxDecoration(
+                                      color: catColors[index],
+                                      shape: BoxShape.circle,
+                                    ),
+                                    child: Center(
+                                      child: catIcons[index],
+                                    ),
+                                  ),
+                                  SizedBox(height: 10,),
+                                  Text(
+                                    Names[index],
+                                    style: TextStyle(
+                                      fontSize: 15,
+                                      fontWeight: FontWeight.w500,
+                                      color: Colors.black.withOpacity(0.7),
+                                    ),
+                                  ),
+                                ],
+                              );
+                            },
                         ),
+                      ],
+                    ),
+                ),
+                Padding(
+                  padding: EdgeInsets.only(
+                    left: 10,
+                    right: 10,
+                  ),
+                  child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      "Courses",
+                      style: TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.w500,
+                        color: Colors.black,
                       ),
-                    );
-                  },
-              ),
-            ],
+                    ),
+                    Text(
+                      "See all",
+                      style: TextStyle(
+                        fontSize: 17,
+                        fontWeight: FontWeight.w500,
+                        color: Colors.lightBlueAccent,
+                      ),
+                    ),
+                  ],
+                ),
+                ),
+                SizedBox(height: 20),
+
+                GridView.builder(
+                  padding: const EdgeInsets.only(left: 10),
+                    itemCount: imgList.length,
+                    shrinkWrap: true,
+                    physics: NeverScrollableScrollPhysics(),
+                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                        crossAxisCount: 2,
+                      childAspectRatio: (
+                      MediaQuery.of(context).size.height) / (4 * 240),
+                      mainAxisSpacing: 10,
+                      crossAxisSpacing: 10,
+                    ),
+                    itemBuilder: (context, index){
+                      return InkWell(
+                        onTap: () {},
+                        child: Container(
+                          padding: EdgeInsets.symmetric(vertical: 20, horizontal: 10),
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(20),
+                            color: Color(0xFFF5F3FF),
+                          ),
+                          child: Column(
+                            children: [
+                              Padding(
+                                  padding: EdgeInsets.all(10),
+                                 child: Image.asset(
+                                   "img/${imgList[index]}.png",
+                                   width: 100,
+                                   height: 100,
+                                 ),
+                              ),
+                              SizedBox(height: 10),
+                              Text(
+                                imgList[index],
+                                style: TextStyle(
+                                  fontSize: 15,
+                                  fontWeight: FontWeight.w500,
+                                  color: Colors.black..withOpacity(0.6),
+                                ),
+                              )
+                            ],
+                          ),
+                        ),
+                      );
+                    },
+                ),
+              ],
+            ),
           ),
       ),
+    ),
     ),
   );
   }
