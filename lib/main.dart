@@ -4,6 +4,7 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:sample/navbar.dart';
 
 void main() {
   runApp(const MyApp());
@@ -52,6 +53,13 @@ class _MyHomePageState extends State<MyHomePage> {
     Color(0xFFFFCDD2),
   ];
 
+  List bgimg=[
+    Image(image: AssetImage("img/ed2.jpg")),
+    Image(image: AssetImage("img/ed3.jpg")),
+    Image(image: AssetImage("img/ed4.jpg")),
+    Image(image: AssetImage("img/ed5.jpg")),
+  ];
+
   List<Icon> catIcons=[
     Icon(Icons.category, color: Colors.white, size: 30),
     Icon(Icons.video_library, color: Colors.white, size: 30),
@@ -67,13 +75,46 @@ class _MyHomePageState extends State<MyHomePage> {
     'python',
   ];
 
+  GlobalKey<ScaffoldState> _scanfoldkey = GlobalKey<ScaffoldState>();
+
   @override
   Widget build(BuildContext context) {
-  return Scaffold(
-    body: Container(
+  return Container(
     color: Colors.deepOrange,
     child: SafeArea(
       child: Scaffold(
+        key: _scanfoldkey,
+          drawer: Drawer(
+            child: ListView(
+              children: [
+               UserAccountsDrawerHeader(
+                   accountName: Text(
+                     "ABC",
+                     style: TextStyle(
+                       fontSize: 20,
+                       fontWeight: FontWeight.w600,
+                     ),
+                   ),
+                   accountEmail: Text("abc@gmail.com"),
+                   currentAccountPicture: CircleAvatar(
+                     child: ClipOval(
+                       child: Image.asset(
+                           "img/flutter.png",
+                            width: 90,
+                            height: 90,
+                           fit: BoxFit.cover,
+                       ),
+                     ),
+                   ),
+                 decoration: BoxDecoration(
+                   image: DecorationImage(
+                     image: AssetImage("img/bg.img"),
+                   ),
+                 ),
+               ),
+              ],
+            ),
+          ),
           body: SingleChildScrollView(
             child: Column(
               children: [
@@ -83,7 +124,10 @@ class _MyHomePageState extends State<MyHomePage> {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Icon(Icons.menu,size: 24,color: Colors.black,),
+                        IconButton(
+                            icon: Icon(Icons.menu,size: 24,color: Colors.black,),
+                             onPressed: () => _scanfoldkey.currentState?.openDrawer(),
+                        ),
                         Row(
                           children: [
                             Icon(Icons.search),
@@ -272,7 +316,7 @@ class _MyHomePageState extends State<MyHomePage> {
           ),
       ),
     ),
-    ),
   );
   }
 }
+
