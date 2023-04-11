@@ -4,7 +4,7 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-import 'package:sample/navbar.dart';
+import 'package:sample/course_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -95,11 +95,13 @@ class _MyHomePageState extends State<MyHomePage> {
                        fontWeight: FontWeight.w600,
                      ),
                    ),
-                   accountEmail: Text("abc@gmail.com"),
+                   accountEmail: Text(
+                       "abc@gmail.com",
+                   ),
                    currentAccountPicture: CircleAvatar(
                      child: ClipOval(
                        child: Image.asset(
-                           "img/flutter.png",
+                           "img/profile.jpg",
                             width: 90,
                             height: 90,
                            fit: BoxFit.cover,
@@ -108,10 +110,42 @@ class _MyHomePageState extends State<MyHomePage> {
                    ),
                  decoration: BoxDecoration(
                    image: DecorationImage(
-                     image: AssetImage("img/bg.img"),
+                     image: AssetImage("img/bg2.jpg"),
+                     fit: BoxFit.cover,
+                     opacity: 0.8,
                    ),
                  ),
                ),
+               ListTile(
+                 leading: Icon(Icons.save_as_rounded),
+                 title: Text("Saved Playlist"),
+                 onTap: () => null,
+               ),
+                ListTile(
+                  leading: Icon(Icons.watch_later),
+                  title: Text("Watch Later"),
+                  onTap: () => null,
+                ),
+                ListTile(
+                  leading: Icon(Icons.share),
+                  title: Text("Share"),
+                  onTap: () => null,
+                ),
+                ListTile(
+                  leading: Icon(Icons.notifications),
+                  title: Text("Notifications"),
+                  onTap: () => null,
+                ),
+                ListTile(
+                  leading: Icon(Icons.settings),
+                  title: Text("Settings"),
+                  onTap: () => null,
+                ),
+                ListTile(
+                  leading: Icon(Icons.logout),
+                  title: Text("Logout"),
+                  onTap: () => null,
+                ),
               ],
             ),
           ),
@@ -130,9 +164,7 @@ class _MyHomePageState extends State<MyHomePage> {
                         ),
                         Row(
                           children: [
-                            Icon(Icons.search),
-                            SizedBox(width: 10,),
-                            Icon(Icons.notifications),
+                            Icon(Icons.search)
                           ],
                         ),
                       ],
@@ -279,7 +311,12 @@ class _MyHomePageState extends State<MyHomePage> {
                     ),
                     itemBuilder: (context, index){
                       return InkWell(
-                        onTap: () {},
+                        onTap: () {
+                          Navigator.push(context, MaterialPageRoute(
+                              builder: (context) => CourseScreen(imgList[index]),
+                          ),
+                          );
+                        },
                         child: Container(
                           padding: EdgeInsets.symmetric(vertical: 20, horizontal: 10),
                           decoration: BoxDecoration(
