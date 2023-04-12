@@ -5,6 +5,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:sample/course_screen.dart';
+import 'package:carousel_slider/carousel_slider.dart';
 
 void main() {
   runApp(const MyApp());
@@ -74,6 +75,16 @@ class _MyHomePageState extends State<MyHomePage> {
     'react-js',
     'python',
   ];
+
+  List imageList=[
+    {"id": 1, "image_path": 'img/ed3.jpg'},
+    {"id": 2, "image_path": 'img/slider1.jpg'},
+    {"id": 3, "image_path": 'img/ed5.jpg'},
+    {"id": 4, "image_path": 'img/slider2.jpg'},
+  ];
+
+  final CarouselController carouselController = CarouselController();
+  int currentindex = 0;
 
   GlobalKey<ScaffoldState> _scanfoldkey = GlobalKey<ScaffoldState>();
 
@@ -191,31 +202,58 @@ class _MyHomePageState extends State<MyHomePage> {
                   height: 180,
                   child: Stack(
                     children: [
-                      Positioned(
-                          top: 0,
-                          left: -20,
-                          right: -20,
-                          child:   Container(
-                            height: 180,
-                            child: PageView.builder(
-                                controller: PageController(viewportFraction: 0.8),
-                                itemCount: 4,
-                                itemBuilder: (_, i)
-                                {
-                                  return Container(
-                                    height: 180,
-                                    width: MediaQuery.of(context).size.width,
-                                    margin: EdgeInsets.only(right: 10),
-                                    decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(15),
-                                      image: DecorationImage(
-                                        image: AssetImage("img/ed7.jpg"),
-                                        fit: BoxFit.fill,
-                                      ),
-                                    ),
-                                  );
-                                }),
+                      InkWell(
+                        onTap: () {
+                          print(currentindex);
+                        },
+                        child: CarouselSlider(
+                          items: imageList
+                              .map(
+                                (item) => Image.asset(
+                              item['image_path'],
+                              fit: BoxFit.cover,
+                              width: double.infinity,
+                            ),
+                          )
+                              .toList(),
+                          carouselController: carouselController,
+                          options: CarouselOptions(
+                            scrollPhysics: const BouncingScrollPhysics(),
+                            autoPlay: true,
+                            aspectRatio: 2,
+                            viewportFraction: 1,
+                            onPageChanged: (index, reason) {
+                              setState(() {
+                                currentindex = index;
+                              });
+                            },
                           ),
+                        ),
+                      ),
+                      Positioned(
+                        bottom: 10,
+                        left: 0,
+                        right: 0,
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: imageList.asMap().entries.map((entry) {
+                            return GestureDetector(
+                              onTap: () => carouselController.animateToPage(entry.key),
+                              child: Container(
+                                width: currentindex == entry.key ? 17 : 7,
+                                height: 7.0,
+                                margin: const EdgeInsets.symmetric(
+                                  horizontal: 3.0,
+                                ),
+                                decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(10),
+                                    color: currentindex == entry.key
+                                        ? Colors.red
+                                        : Colors.teal),
+                              ),
+                            );
+                          }).toList(),
+                        ),
                       ),
                     ],
                   ),
